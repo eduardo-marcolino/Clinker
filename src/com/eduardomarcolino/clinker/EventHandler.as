@@ -26,7 +26,8 @@
 		public function stageResize(e:Event) 
 		{
 			var view = currentView as View
-			//TODO Call the layout onResize method also StageHandler.layout
+
+      StageHandler.layout.onResize(e);
 			view.onResize(e);
 		}
 		
@@ -36,7 +37,8 @@
 		{
 			var view = stageHandler.render(route.get(url)) as View;
 			if (currentView != null) { currentView.onLeave(); }
-			
+      
+			StageHandler.layout.onViewChange();
 			view.onEnter();
 			currentView = view;
 		}
